@@ -1,0 +1,32 @@
+const Sequelize = require("sequelize");
+const db = require("../database");
+
+const Dummy = db.define("dummy", {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  description: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0,
+      max: 10
+    }
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: null
+  }
+});
+
+module.exports = Dummy;
